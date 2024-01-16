@@ -1,5 +1,5 @@
 ---
-name: "\moreview issue templage"
+name: "\moreview issue template"
 about: 어떤 이슈인지 적어주세요
 title: ''
 labels: ''
@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-## 🤷 구현할 기능
+## 👷 구현할 기능
 ex) 홈화면 API
 
 ## 🔨 상세 작업 내용
