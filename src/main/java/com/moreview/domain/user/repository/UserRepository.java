@@ -1,6 +1,6 @@
 package com.moreview.domain.user.repository;
 
-import org.apache.catalina.User;
+import com.moreview.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

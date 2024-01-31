@@ -46,6 +46,9 @@ dependencies {
 	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
 	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
 
+	// Annotation Processor
+	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
 	// SpringDoc for Spring MVC
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-api:2.3.0'

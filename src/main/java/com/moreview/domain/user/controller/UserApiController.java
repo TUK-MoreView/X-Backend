@@ -32,7 +32,7 @@ public class UserApiController {
 
     @GetMapping("/login")
     public String login() {
-        return "login";
+        return "oauthLogin";
     }
 
     @GetMapping("/logout")
