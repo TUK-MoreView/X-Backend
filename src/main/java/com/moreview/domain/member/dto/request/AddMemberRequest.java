@@ -1,4 +1,4 @@
-package com.moreview.domain.user.dto.request;
+package com.moreview.domain.member.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,7 +7,7 @@ import lombok.Getter;
 @Getter
 @Builder
 @AllArgsConstructor
-public class AddUserRequest {
+public class AddMemberRequest {
 
     private String email;
     private String password;

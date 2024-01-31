@@ -1,4 +1,4 @@
-package com.moreview.domain.user;
+package com.moreview.domain.member;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -12,11 +12,11 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
 
-@Table(name = "users")
+@Entity
+@Table(name = "members")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@Entity
-public class User implements UserDetails {
+public class Member implements UserDetails {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false)
@@ -32,13 +32,13 @@ public class User implements UserDetails {
     private String nickname;
 
     @Builder
-    public User(String email, String password, String nickname) {
+    public Member(String email, String password, String nickname) {
         this.email = email;
         this.password = password;
         this.nickname = nickname;
     }
 
-    public User update(String nickname) {
+    public Member update(String nickname) {
         this.nickname = nickname;
 
         return this;
@@ -46,7 +46,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("user"));
+        return List.of(new SimpleGrantedAuthority("member"));
     }
 
     @Override

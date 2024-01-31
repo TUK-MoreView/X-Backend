@@ -1,6 +1,6 @@
 package com.moreview.global.security.Oauth2.repository;
 
-import com.moreview.global.util.service.CookieUtil;
+import com.moreview.global.util.CookieUtil;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

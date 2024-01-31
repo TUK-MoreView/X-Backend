@@ -1,12 +1,12 @@
 package com.moreview.global.security.Oauth2;
 
-import com.moreview.domain.user.User;
-import com.moreview.domain.user.service.UserService;
+import com.moreview.domain.member.Member;
+import com.moreview.domain.member.service.MemberService;
 import com.moreview.global.security.Oauth2.repository.OAuth2AuthorizationRequestBasedOnCookieRepository;
 import com.moreview.global.security.jwt.RefreshToken;
 import com.moreview.global.security.jwt.TokenProvider;
 import com.moreview.global.security.jwt.repository.RefreshTokenRepository;
-import com.moreview.global.util.service.CookieUtil;
+import com.moreview.global.util.CookieUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -31,18 +31,18 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
     private final TokenProvider tokenProvider;
     private final RefreshTokenRepository refreshTokenRepository;
     private final OAuth2AuthorizationRequestBasedOnCookieRepository authorizationRequestRepository;
-    private final UserService userService;
+    private final MemberService memberService;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
         OAuth2User oAuth2User = (OAuth2User) authentication.getPrincipal();
-        User user = userService.findByEmail((String) oAuth2User.getAttributes().get("email"));
+        Member member = memberService.findByEmail((String) oAuth2User.getAttributes().get("email"));
 
-        String refreshToken = tokenProvider.generateToken(user, REFRESH_TOKEN_DURATION);
-        saveRefreshToken(user.getId(), refreshToken);
+        String refreshToken = tokenProvider.generateToken(member, REFRESH_TOKEN_DURATION);
+        saveRefreshToken(member.getId(), refreshToken);
         addRefreshTokenToCookie(request, response, refreshToken);
 
-        String accessToken = tokenProvider.generateToken(user, ACCESS_TOKEN_DURATION);
+        String accessToken = tokenProvider.generateToken(member, ACCESS_TOKEN_DURATION);
         String targetUrl = getTargetUrl(accessToken);
 
         clearAuthenticationAttributes(request, response);
@@ -50,10 +50,10 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
         getRedirectStrategy().sendRedirect(request, response, targetUrl);
     }
 
-    private void saveRefreshToken(Long userId, String newRefreshToken) {
-        RefreshToken refreshToken = refreshTokenRepository.findByUserId(userId)
+    private void saveRefreshToken(Long memberId, String newRefreshToken) {
+        RefreshToken refreshToken = refreshTokenRepository.findByMemberId(memberId)
                 .map(entity -> entity.update(newRefreshToken))
-                .orElse(new RefreshToken(userId, newRefreshToken));
+                .orElse(new RefreshToken(memberId, newRefreshToken));
 
         refreshTokenRepository.save(refreshToken);
     }

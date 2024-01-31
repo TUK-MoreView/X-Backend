@@ -1,7 +1,7 @@
 package com.moreview.global.security.jwt.service;
 
-import com.moreview.domain.user.User;
-import com.moreview.domain.user.service.UserService;
+import com.moreview.domain.member.Member;
+import com.moreview.domain.member.service.MemberService;
 import com.moreview.global.security.jwt.TokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ public class TokenService {
 
     private final TokenProvider tokenProvider;
     private final RefreshTokenService refreshTokenService;
-    private final UserService userService;
+    private final MemberService memberService;
 
     public String createNewAccessToken(String refreshToken) {
         // 토큰 유효성 검사에 실패하면 예외 발생
@@ -22,9 +22,9 @@ public class TokenService {
             throw new IllegalArgumentException("Unexpected token");
         }
 
-        Long userId = refreshTokenService.findByRefreshToken(refreshToken).getUserId();
-        User user = userService.findById(userId);
+        Long memberId = refreshTokenService.findByRefreshToken(refreshToken).getMemberId();
+        Member member = memberService.findById(memberId);
 
-        return tokenProvider.generateToken(user, Duration.ofHours(2));
+        return tokenProvider.generateToken(member, Duration.ofHours(2));
     }
 }

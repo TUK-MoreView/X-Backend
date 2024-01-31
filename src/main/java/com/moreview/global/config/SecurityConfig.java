@@ -1,6 +1,6 @@
 //package com.moreview.global.config;
 //
-//import com.moreview.domain.user.service.UserDetailService;
+//import com.moreview.domain.user.service.MemberDetailService;
 //import org.springframework.context.annotation.Bean;
 //import org.springframework.context.annotation.Configuration;
 //import org.springframework.security.authentication.AuthenticationManager;
@@ -17,7 +17,7 @@
 //@EnableWebSecurity
 //public class SecurityConfig {
 //
-//    private final UserDetailService userService;
+//    private final MemberDetailService userService;
 //
 //    @Bean
 //    public WebSecurityCustomizer configure() {
@@ -46,7 +46,7 @@
 //    }
 //
 //    @Bean
-//    public AuthenticationManager authenticationManager(HttpSecurity http, BCryptPasswordEncoder bCryptPasswordEncoder, UserDetailService userDetailService) throws Exception {
+//    public AuthenticationManager authenticationManager(HttpSecurity http, BCryptPasswordEncoder bCryptPasswordEncoder, MemberDetailService userDetailService) throws Exception {
 //        return http.getSharedObject(AuthenticationManagerBuilder.class)
 //                .userDetailsService(userService)
 //                .passwordEncoder(bCryptPasswordEncoder)

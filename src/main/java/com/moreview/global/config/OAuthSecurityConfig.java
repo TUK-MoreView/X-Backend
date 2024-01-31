@@ -1,6 +1,6 @@
 package com.moreview.global.config;
 
-import com.moreview.domain.user.service.UserService;
+import com.moreview.domain.member.service.MemberService;
 import com.moreview.global.security.Oauth2.OAuth2SuccessHandler;
 import com.moreview.global.security.Oauth2.repository.OAuth2AuthorizationRequestBasedOnCookieRepository;
 import com.moreview.global.security.Oauth2.service.OAuth2UserCustomService;
@@ -29,7 +29,7 @@ public class OAuthSecurityConfig {
     private final OAuth2UserCustomService oAuth2UserCustomService;
     private final TokenProvider tokenProvider;
     private final RefreshTokenRepository refreshTokenRepository;
-    private final UserService userService;
+    private final MemberService memberService;
 
     @Bean
     public WebSecurityCustomizer configure() {
@@ -83,7 +83,7 @@ public class OAuthSecurityConfig {
         return new OAuth2SuccessHandler(tokenProvider,
                 refreshTokenRepository,
                 oAuth2AuthorizationRequestBasedOnCookieRepository(),
-                userService
+                memberService
         );
     }
 

@@ -1,34 +1,34 @@
-package com.moreview.domain.user.service;
+package com.moreview.domain.member.service;
 
 import lombok.RequiredArgsConstructor;
-import com.moreview.domain.user.User;
-import com.moreview.domain.user.dto.request.AddUserRequest;
-import com.moreview.domain.user.repository.UserRepository;
+import com.moreview.domain.member.Member;
+import com.moreview.domain.member.dto.request.AddMemberRequest;
+import com.moreview.domain.member.repository.MemberRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class UserService {
+public class MemberService {
 
-    private final UserRepository userRepository;
+    private final MemberRepository memberRepository;
 
-    public Long save(AddUserRequest dto) {
+    public Long save(AddMemberRequest dto) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-        return userRepository.save(User.builder()
+        return memberRepository.save(Member.builder()
                 .email(dto.getEmail())
                 .password(encoder.encode(dto.getPassword()))
                 .build()).getId();
     }
 
-    public User findById(Long userId) {
-        return userRepository.findById(userId)
+    public Member findById(Long userId) {
+        return memberRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("Unexpected user"));
     }
 
-    public User findByEmail(String email) {
-        return userRepository.findByEmail(email)
+    public Member findByEmail(String email) {
+        return memberRepository.findByEmail(email)
                 .orElseThrow(() -> new IllegalArgumentException("Unexpected user"));
     }
 }

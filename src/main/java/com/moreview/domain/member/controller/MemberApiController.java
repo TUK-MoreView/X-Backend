@@ -1,7 +1,7 @@
-package com.moreview.domain.user.controller;
+package com.moreview.domain.member.controller;
 
-import com.moreview.domain.user.dto.request.AddUserRequest;
-import com.moreview.domain.user.service.UserService;
+import com.moreview.domain.member.dto.request.AddMemberRequest;
+import com.moreview.domain.member.service.MemberService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -15,13 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("api/v1")
-public class UserApiController {
+public class MemberApiController {
 
-    private final UserService userService;
+    private final MemberService memberService;
 
-    @PostMapping("/users")
-    public String singup(AddUserRequest request) {
-        userService.save(request);
+    @PostMapping("/members")
+    public String singup(AddMemberRequest request) {
+        memberService.save(request);
         return "redirect:/login";
     }
 
