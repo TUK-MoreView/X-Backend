@@ -1,6 +1,7 @@
 package com.moreview.domain.member.entity;
 
 import com.moreview.domain.base.BaseEntity;
+import com.moreview.domain.member.editor.MemberEditor;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,5 +28,11 @@ public class Member extends BaseEntity {
     private String email;
 
     private String role;
+
+    public MemberEditor.MemberEditorBuilder toEditor() {
+        return MemberEditor.builder()
+                .name(name)
+                .email(email);
+    }
 
 }
