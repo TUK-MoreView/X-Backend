@@ -1,6 +1,5 @@
-package com.moreview.global.security.Oauth2.dto;
+package com.moreview.global.security.oauth2.dto;
 
-import com.moreview.global.security.Oauth2.dto.response.OAuth2Response;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 

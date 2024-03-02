@@ -1,4 +1,4 @@
-package com.moreview.global.security.Oauth2.dto.response;
+package com.moreview.global.security.oauth2.dto.response;
 
 import java.util.Map;
 

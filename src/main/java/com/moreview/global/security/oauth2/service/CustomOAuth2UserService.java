@@ -1,13 +1,13 @@
-package com.moreview.global.security.Oauth2.service;
+package com.moreview.global.security.oauth2.service;
 
 import com.moreview.domain.member.editor.MemberEditor;
 import com.moreview.domain.member.entity.Member;
 import com.moreview.domain.member.repository.MemberRepository;
-import com.moreview.global.security.Oauth2.dto.CustomOAuth2User;
-import com.moreview.global.security.Oauth2.dto.response.KakaoResponse;
-import com.moreview.global.security.Oauth2.dto.MemberDto;
-import com.moreview.global.security.Oauth2.dto.response.NaverResponse;
-import com.moreview.global.security.Oauth2.dto.response.OAuth2Response;
+import com.moreview.global.security.oauth2.dto.CustomOAuth2User;
+import com.moreview.global.security.oauth2.dto.response.KakaoResponse;
+import com.moreview.global.security.oauth2.dto.MemberDto;
+import com.moreview.global.security.oauth2.dto.response.NaverResponse;
+import com.moreview.global.security.oauth2.dto.response.OAuth2Response;
 import lombok.AllArgsConstructor;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;

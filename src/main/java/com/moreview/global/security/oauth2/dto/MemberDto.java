@@ -1,8 +1,7 @@
-package com.moreview.global.security.Oauth2.dto;
+package com.moreview.global.security.oauth2.dto;
 
 import lombok.Builder;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 @Getter
 @Builder

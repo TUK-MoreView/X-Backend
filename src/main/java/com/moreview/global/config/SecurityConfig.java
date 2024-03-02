@@ -1,8 +1,8 @@
 package com.moreview.global.config;
 
 
-import com.moreview.global.security.Oauth2.controller.CustomSuccessHandler;
-import com.moreview.global.security.Oauth2.service.CustomOAuth2UserService;
+import com.moreview.global.security.oauth2.controller.CustomSuccessHandler;
+import com.moreview.global.security.oauth2.service.CustomOAuth2UserService;
 import com.moreview.global.util.JwtUtil;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;

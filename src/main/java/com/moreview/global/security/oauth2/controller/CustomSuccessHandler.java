@@ -1,6 +1,6 @@
-package com.moreview.global.security.Oauth2.controller;
+package com.moreview.global.security.oauth2.controller;
 
-import com.moreview.global.security.Oauth2.dto.CustomOAuth2User;
+import com.moreview.global.security.oauth2.dto.CustomOAuth2User;
 import com.moreview.global.util.JwtUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
