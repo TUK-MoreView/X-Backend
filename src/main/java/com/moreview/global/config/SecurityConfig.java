@@ -1,9 +1,11 @@
 package com.moreview.global.config;
 
 
+import com.moreview.global.security.jwt.JwtFilter;
 import com.moreview.global.security.oauth2.controller.CustomSuccessHandler;
 import com.moreview.global.security.oauth2.service.CustomOAuth2UserService;
 import com.moreview.global.util.JwtUtil;
+import io.jsonwebtoken.Jwt;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +13,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -35,6 +38,10 @@ public class SecurityConfig {
         // HTTP Basic 인증 방식 disable
         http
                 .httpBasic((auth) -> auth.disable());
+
+        // JwtFilter 추가
+        http
+                .addFilterBefore(new JwtFilter(jwtUtil), UsernamePasswordAuthenticationFilter.class);
 
         // oauth2
         http
