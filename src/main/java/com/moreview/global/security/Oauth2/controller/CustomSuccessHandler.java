@@ -3,6 +3,7 @@ package com.moreview.global.security.Oauth2.controller;
 import com.moreview.global.security.Oauth2.dto.CustomOAuth2User;
 import com.moreview.global.util.JwtUtil;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
@@ -35,5 +36,19 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
         String role = auth.getAuthority();
 
         String token = jwtUtil.createJwt(memberName, role, 60 * 60 * 60L);
+
+        response.addCookie(createCookie("Authorization", token));
+        response.sendRedirect("http://localhost:3000/");
+    }
+
+    private Cookie createCookie(String key, String value) {
+
+        Cookie cookie = new Cookie(key, value);
+        cookie.setMaxAge(60*60*60);
+        // cookie.setSecure(true);
+        cookie.setPath("/");
+        cookie.setHttpOnly(true);
+
+        return cookie;
     }
 }
