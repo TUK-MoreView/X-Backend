@@ -1,18 +1,15 @@
 package com.moreview.global.security.oauth2.dto.response;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 import java.util.Map;
 
+@Getter
+@AllArgsConstructor
 public class KakaoResponse implements OAuth2Response {
 
-    private final Map<String, Object> attribute;
-    private final Map<String, Object> kakaoAccount;
-    private final Map<String, Object> profile;
-
-    public KakaoResponse(Map<String, Object> attribute) {
-        this.attribute = attribute;
-        this.kakaoAccount = (Map<String, Object>) attribute.get("kakao_account");
-        this.profile = (Map<String, Object>) kakaoAccount.get("profile");
-    }
+    private final Map<String, Object> attriute;
 
     @Override
     public String getProvider() {
@@ -23,18 +20,21 @@ public class KakaoResponse implements OAuth2Response {
     @Override
     public String getProviderId() {
 
-        return attribute.get("id").toString();
+        return attriute.get("id").toString();
     }
 
     @Override
     public String getEmail() {
-
-        return kakaoAccount.get("email").toString();
+        Map<String, Object> kakaoAccount = (Map<String, Object>) attriute.get("kakao_account");
+        return (String) kakaoAccount.get("email");
     }
 
     @Override
     public String getName() {
-
-        return profile.get("nickname").toString();
+        Map<String, Object> kakaoAccount = (Map<String, Object>) attriute.get("kakao_account");
+        Map<String, Object> profile = (Map<String, Object>) kakaoAccount.get("profile");
+        return (String) profile.get("nickname");
     }
+
+
 }
