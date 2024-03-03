@@ -35,8 +35,8 @@ jobs:
       with:
         character set server: 'utf8'
         mysql database: 'moreview@moreview-web.cduyuk402hq2.ap-northeast-2.rds.amazonaws.com'
-        mysql user: ${{ MYSQL_USERNAME }}
-        mysql password: ${{ MYSQL_PASSWORD }}
+        mysql user: ${{ secrets.MYSQL_USERNAME }}
+        mysql password: ${{ secrets.MYSQL_PASSWORD }}
     
     - name: Execute Gradle build
       run: ./gradlew build
