@@ -29,6 +29,14 @@ jobs:
     # 2. Spring Boot 애플리케이션 빌드
     - name: Setup Gradle
       uses: gradle/gradle-build-action@v2
+
+    - name: Setup MySQL
+      uses: samin/mysql-action@v1
+      with:
+        character set server: 'utf8'
+        mysql database: 'moreview@moreview-web.cduyuk402hq2.ap-northeast-2.rds.amazonaws.com'
+        mysql user: ${{ MYSQL_USERNAME }}
+        mysql password: ${{ MYSQL_PASSWORD }}
     
     - name: Execute Gradle build
       run: ./gradlew build
