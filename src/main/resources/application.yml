@@ -64,3 +64,17 @@ spring:
 jwt:
   issuer: ${JWT_ISSUER}
   secret_key: ${JWT_SECRET_KEY}
+
+cloud:
+  aws:
+    s3:
+      bucket: 버킷이름
+    stack:
+      auto: false
+    region:
+      static: ap-northeast-2
+    credentials:
+      access-key: ${CLOUD_AWS_CREDENTIALS_ACCESSKEY}
+      secret-key: ${CLOUD_AWS_CREDENTIALS_SECRETKEY}
+
+
