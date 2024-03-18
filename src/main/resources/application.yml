@@ -68,13 +68,14 @@ jwt:
 cloud:
   aws:
     s3:
-      bucket: 버킷이름
+      bucket: ${CLOUD_AWS_S3_BUCKET}
     stack:
       auto: false
     region:
-      static: ap-northeast-2
+      static: ${CLOUD_AWS_REGION_STATIC}
     credentials:
       access-key: ${CLOUD_AWS_CREDENTIALS_ACCESSKEY}
       secret-key: ${CLOUD_AWS_CREDENTIALS_SECRETKEY}
+
 
 
