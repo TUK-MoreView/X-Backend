@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartRequest;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,10 +21,24 @@ public class S3FileUploaderController {
 
     @PostMapping
     @ResponseBody
-    public Map<String, Object> imageUpload(MultipartRequest request){
+    public Map<String, Object> imageUpload(MultipartRequest request) throws IOException{
 
         Map<String, Object> responseData = new HashMap<>();
 
-            return null;
+        try {
+
+            String s3Url = s3FileUploader.imageUpload(request);
+
+            responseData.put("uploaded", true);
+            responseData.put("url", s3Url);
+
+            return responseData;
+
+        } catch (IOException e) {
+
+            responseData.put("uploaded", false);
+
+            return responseData;
+        }
         }
 }
