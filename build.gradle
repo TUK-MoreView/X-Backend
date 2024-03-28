@@ -58,6 +58,10 @@ dependencies {
 
 	// s3
 	implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
+
+
+	//mariaDB
+	implementation 'org.mariadb.jdbc:mariadb-java-client:3.1.4'
 }
 
 tasks.named('bootBuildImage') {
